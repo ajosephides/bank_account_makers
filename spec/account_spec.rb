@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require 'account'
 
 describe Account do
-
-  let(:account) {Account.new}
+  let(:account) { Account.new }
   describe '#print' do
     it 'should be able to print a statement with correct headings' do
       account.deposit(1000.00, '10/01/2012')
@@ -37,8 +38,4 @@ describe Account do
       expect(account.transactions.length).to eq(2)
     end
   end
-
-
-
 end
-

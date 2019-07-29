@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Account
   attr_reader :balance, :transactions
 
@@ -7,18 +9,18 @@ class Account
   end
 
   def deposit(amount, date)
-    @balance = @balance + amount
-    @transactions.push({:amount => amount, :date => date, :type => 'deposit', :balance => @balance})
+    @balance += amount
+    @transactions.push(amount: amount, date: date, type: 'deposit', balance: @balance)
   end
 
   def withdraw(amount, date)
-    @balance = @balance - amount
-    @transactions.push({:amount => amount, :date => date, :type => 'withdrawl', :balance => @balance})
+    @balance -= amount
+    @transactions.push(amount: amount, date: date, type: 'withdrawl', balance: @balance)
   end
 
   def print
     output = []
-    output.push("date || credit || debit || balance")
+    output.push('date || credit || debit || balance')
     @transactions.reverse.each do |transaction|
       if transaction[:type] == 'deposit'
         output.push("#{transaction[:date]} || #{'%.2f' % transaction[:amount]} || || #{'%.2f' % transaction[:balance]}")
@@ -26,6 +28,6 @@ class Account
         output.push("#{transaction[:date]} || || #{'%.2f' % transaction[:amount]} || #{'%.2f' % transaction[:balance]}")
       end
     end
-    return output.join("\n")
+    output.join("\n")
   end
 end
