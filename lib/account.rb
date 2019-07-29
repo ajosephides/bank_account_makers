@@ -15,6 +15,7 @@ class Account
 
   def withdraw(amount, date)
     @balance = @balance - amount
+    @transactions.push({:amount => amount, :date => date})
   end
 
   def print

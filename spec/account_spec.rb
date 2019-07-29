@@ -27,6 +27,12 @@ describe Account do
       account.withdraw(500.00, '11/01/2012')
       expect(account.balance).to eq(500.00)
     end
+
+    it 'increases the number of transactions' do
+      account.deposit(1000.00, '10/01/2012')
+      account.withdraw(500.00, '11/01/2012')
+      expect(account.transactions.length).to eq(2)
+    end
   end
 
 
