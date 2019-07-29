@@ -1,33 +1,36 @@
 # frozen_string_literal: true
+require 'transaction'
 
 class Account
-  attr_reader :balance, :transactions
+  attr_reader :transactions
 
-  def initialize
+  def initialize(transaction = Transaction)
     @balance = 0
     @transactions = []
+    @transaction = transaction
   end
 
-  def deposit(amount, date)
-    @balance += amount
-    @transactions.push(amount: amount, date: date, type: 'deposit', balance: @balance)
+  def deposit(amount)
+    transaction = @transaction.new(amount, 'deposit')
+    @transactions.push(transaction)
   end
 
-  def withdraw(amount, date)
-    @balance -= amount
-    @transactions.push(amount: amount, date: date, type: 'withdrawl', balance: @balance)
+  def withdraw(amount)
+    transaction = @transaction.new(amount, 'withdrawal')
+    @transactions.push(transaction)
   end
 
-  def print
-    output = []
-    output.push('date || credit || debit || balance')
-    @transactions.reverse.each do |transaction|
-      if transaction[:type] == 'deposit'
-        output.push("#{transaction[:date]} || #{'%.2f' % transaction[:amount]} || || #{'%.2f' % transaction[:balance]}")
-      else
-        output.push("#{transaction[:date]} || || #{'%.2f' % transaction[:amount]} || #{'%.2f' % transaction[:balance]}")
-      end
-    end
-    output.join("\n")
-  end
+  # def print
+  #   output = []
+  #   output.push('date || credit || debit || balance')
+  #   @transactions.reverse.each do |transaction|
+  #     if transaction[:type] == 'deposit'
+  #       output.push("#{transaction[:date]} || #{'%.2f' % transaction[:amount]} || || #{'%.2f' % transaction[:balance]}")
+  #     else
+  #       output.push("#{transaction[:date]} || || #{'%.2f' % transaction[:amount]} || #{'%.2f' % transaction[:balance]}")
+  #     end
+  #   end
+  #   output.join("\n")
+  # end
+
 end
