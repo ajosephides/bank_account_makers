@@ -6,20 +6,26 @@ class Account
     @transactions = []
   end
 
-
-
   def deposit(amount, date)
     @balance = @balance + amount
-    @transactions.push({:amount => amount, :date => date})
+    @transactions.push({:amount => amount, :date => date, :type => 'deposit', :balance => @balance})
   end
 
   def withdraw(amount, date)
     @balance = @balance - amount
-    @transactions.push({:amount => amount, :date => date})
+    @transactions.push({:amount => amount, :date => date, :type => 'withdrawl', :balance => @balance})
   end
 
   def print
-    return 'date || credit || debit || balance'
+    output = []
+    output.push("date || credit || debit || balance")
+    @transactions.reverse.each do |transaction|
+      if transaction[:type] == 'deposit'
+        output.push("#{transaction[:date]} || #{'%.2f' % transaction[:amount]} || || #{'%.2f' % transaction[:balance]}")
+      else
+        output.push("#{transaction[:date]} || || #{'%.2f' % transaction[:amount]} || #{'%.2f' % transaction[:balance]}")
+      end
+    end
+    return output.join("\n")
   end
-
 end
