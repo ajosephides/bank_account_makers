@@ -10,6 +10,10 @@ class Account
   def deposit(amount, date)
     @balance = @balance + amount  
   end
+
+  def withdraw(amount, date)
+    @balance = @balance - amount
+  end
   
   def print
     return 'date || credit || debit || balance'
