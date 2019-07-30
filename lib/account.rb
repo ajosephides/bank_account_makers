@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-require 'transaction'
+require_relative './transaction'
 
 class Account
   attr_reader :transactions
