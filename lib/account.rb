@@ -27,11 +27,4 @@ class Account
     statement_printer.print(@transactions)
   end
 
-  private
-
-  def calc_balance(amount)
-  
-  
-  end
-
 end
