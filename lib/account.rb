@@ -6,18 +6,20 @@ class Account
   attr_reader :transactions
 
   def initialize(transaction = Transaction)
-    @balance = 0
+    @balance = 0.0
     @transactions = []
     @transaction = transaction
   end
 
   def deposit(amount)
-    transaction = @transaction.new(amount, 'deposit')
+    @balance = @balance + amount
+    transaction = @transaction.new(amount, 'deposit', @balance)
     @transactions.push(transaction)
   end
 
   def withdraw(amount)
-    transaction = @transaction.new(amount, 'withdrawal')
+    @balance = @balance - amount
+    transaction = @transaction.new(amount, 'withdrawal', @balance)
     @transactions.push(transaction)
   end
 
@@ -25,6 +27,11 @@ class Account
     statement_printer.print(@transactions)
   end
 
+  private
 
+  def calc_balance(amount)
+  
+  
+  end
 
 end
