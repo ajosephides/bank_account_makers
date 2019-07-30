@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 require_relative './transaction'
+require_relative './statement_printer'
 
 class Account
   attr_reader :transactions
@@ -20,17 +21,10 @@ class Account
     @transactions.push(transaction)
   end
 
-  # def print
-  #   output = []
-  #   output.push('date || credit || debit || balance')
-  #   @transactions.reverse.each do |transaction|
-  #     if transaction[:type] == 'deposit'
-  #       output.push("#{transaction[:date]} || #{'%.2f' % transaction[:amount]} || || #{'%.2f' % transaction[:balance]}")
-  #     else
-  #       output.push("#{transaction[:date]} || || #{'%.2f' % transaction[:amount]} || #{'%.2f' % transaction[:balance]}")
-  #     end
-  #   end
-  #   output.join("\n")
-  # end
+  def statement(statement_printer = StatementPrinter)
+    statement_printer.print(@transactions)
+  end
+
+
 
 end
