@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'date'
 
 class Transaction
-
   attr_reader :amount, :type, :date, :balance
 
   def initialize(amount, type, balance)
@@ -10,5 +11,4 @@ class Transaction
     @date = Time.now.utc
     @balance = balance
   end
-
 end

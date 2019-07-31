@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require_relative './transaction'
 require_relative './statement_printer'
 
@@ -12,13 +13,13 @@ class Account
   end
 
   def deposit(amount)
-    @balance = @balance + amount
+    @balance += amount
     transaction = @transaction.new(amount, 'deposit', @balance)
     @transactions.push(transaction)
   end
 
   def withdraw(amount)
-    @balance = @balance - amount
+    @balance -= amount
     transaction = @transaction.new(amount, 'withdrawal', @balance)
     @transactions.push(transaction)
   end
@@ -26,5 +27,4 @@ class Account
   def statement(statement_printer = StatementPrinter)
     statement_printer.print(@transactions)
   end
-
 end

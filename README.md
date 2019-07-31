@@ -29,6 +29,7 @@ To Run
 In the main project folder please run `bundle`  
 **Tests**  
 In the main project folder please run `rspec`  
+There is currently `100%` test coverage.
 **Program**  
 Please use a REPL (irb) and try the following example:
 ```
@@ -69,3 +70,8 @@ If on the printer no state is stored, it's dynamically calculated, fits requirem
 For the initial implementation I shall calculate on the printer on the fly - for reasons listed but also because at this stage it is less of a refactor!
 
 As I progressed especially when thinking about modules of printer that state of balance must be kept somewhere and so account would be a better place.
+
+Further Work
+---
+- further refactoring (especially around statement printer method)
+- some more tests. Despite being 100% coverage this actually doesn't test all behaviour that the program can fall on. Again around the statement printer module. I believe a test that mocks 2 transactions would be good here. Having said that what this would test is covered by the feature test.

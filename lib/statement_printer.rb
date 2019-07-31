@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require_relative './transaction_printer'
 
 module StatementPrinter
-
   def self.print(transactions, transaction_printer = TransactionPrinter)
     statement = []
     header = 'date || credit || debit || balance'
@@ -14,6 +15,6 @@ module StatementPrinter
   private
 
   def self.order_transactions(transactions)
-    transactions.sort_by { |transaction| transaction.date }.reverse
+    transactions.sort_by(&:date).reverse
   end
 end

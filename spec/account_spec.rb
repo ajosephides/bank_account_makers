@@ -3,10 +3,9 @@
 require 'account'
 
 describe Account do
-  let(:transaction_double) {double :transaction}
-  let(:statement_double) {double :statement}
+  let(:transaction_double) { double :transaction }
+  let(:statement_double) { double :statement }
   let(:account) { Account.new(transaction_double) }
-
 
   describe '#deposit' do
     it 'increases the number of transactions by 1' do
