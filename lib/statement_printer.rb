@@ -1,3 +1,5 @@
+require_relative './transaction_printer'
+
 module StatementPrinter
 
   def self.print(transactions, transaction_printer = TransactionPrinter)
