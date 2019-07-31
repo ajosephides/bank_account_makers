@@ -1,7 +1,11 @@
 module TransactionPrinter
 
   def self.print(transaction)
-    "#{format_date(transaction.date)} || #{format_amount(transaction.amount)} || || #{format_amount(transaction.balance)}"
+    if transaction.type == 'deposit'
+      "#{format_date(transaction.date)} || #{format_amount(transaction.amount)} || || #{format_amount(transaction.balance)}"
+    else
+      "#{format_date(transaction.date)} || || #{format_amount(transaction.amount)} || #{format_amount(transaction.balance)}"
+    end
   end
 
   private
