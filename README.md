@@ -73,5 +73,7 @@ As I progressed especially when thinking about modules of printer that state of 
 
 Further Work
 ---
-- further refactoring (especially around statement printer method)
+- further refactoring (especially around statement printer method). Make methods smaller and handle one type of logic.
 - some more tests. Despite being 100% coverage this actually doesn't test all behaviour that the program can fall on. Again around the statement printer module. I believe a test that mocks 2 transactions would be good here. Having said that what this would test is covered by the feature test.
+- balance (as mentioned above). Could this calculation be its own class?
+
